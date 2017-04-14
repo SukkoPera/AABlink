@@ -3,7 +3,7 @@
 AABlinkShort aaLed;
 
 void setup () {
-	aaLed.begin (LED_BUILTIN, 15, 60000);
+	aaLed.begin (LED_BUILTIN, 10, 60000);
 }
 
 void loop () {
