@@ -2,7 +2,7 @@ template<typename INTERVAL_T>
 class AABlink_T {
 private:
 	byte pin;
-	unsigned long pmillis;
+	unsigned long pmillis = 0;
 	INTERVAL_T times[2];	// 0 -> On, 1 -> Off
 	byte led_level = 0;
 	unsigned long nextEventTime = 0;
@@ -12,8 +12,6 @@ public:
 	  pin = _pin;
 	  times[0] = _timeOn;
 	  times[1] = _timeOff;
-	  pmillis = 0;
-	  //~ led_level = 0;
 
 	  pinMode (pin, OUTPUT);
 	}
