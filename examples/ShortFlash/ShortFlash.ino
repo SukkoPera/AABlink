@@ -3,7 +3,7 @@
 AABlinkShort aaLed;
 
 void setup () {
-	aaLed.begin (LED_BUILTIN, 10, 60000);		// Blink for 10 ms every minute
+	aaLed.begin (LED_BUILTIN, 10, 10000);		// Blink for 10 ms every 10 s
 }
 
 void loop () {
