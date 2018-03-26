@@ -6,6 +6,7 @@ private:
 	INTERVAL_T times[2];	// 0 -> On, 1 -> Off
 	byte led_level = 0;
 	unsigned long nextEventTime = 0;
+	bool running = false;
 
 public:
 	void begin (byte _pin, INTERVAL_T _timeOn, INTERVAL_T _timeOff = 0) {
@@ -19,8 +20,19 @@ public:
 		pinMode (pin, OUTPUT);
 	}
 
+	void blink () {
+		led_level = 0;
+		nextEventTime = 0;		// Might not be necessary
+		running = true;
+	}
+
+	void noBlink () {
+		digitalWrite (pin, LOW);	// Make sure led is off
+		running = false;
+	}
+
 	void loop () {
-	  if (millis () - pmillis >= nextEventTime) {
+	  if (running && millis () - pmillis >= nextEventTime) {
 		nextEventTime = times[led_level];
 		led_level = !led_level;
 		digitalWrite (pin, led_level);
