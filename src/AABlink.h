@@ -8,12 +8,15 @@ private:
 	unsigned long nextEventTime = 0;
 
 public:
-	void begin (byte _pin, INTERVAL_T _timeOn, INTERVAL_T _timeOff) {
-	  pin = _pin;
-	  times[0] = _timeOn;
-	  times[1] = _timeOff;
+	void begin (byte _pin, INTERVAL_T _timeOn, INTERVAL_T _timeOff = 0) {
+		pin = _pin;
+		times[0] = _timeOn;
+		if (_timeOff != 0)
+			times[1] = _timeOff;
+		else		// Symmetric blink
+			times[1] = _timeOn;
 
-	  pinMode (pin, OUTPUT);
+		pinMode (pin, OUTPUT);
 	}
 
 	void loop () {
