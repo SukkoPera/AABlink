@@ -10,9 +10,10 @@ private:
 	bool running = false;
 
 public:
-	void begin (byte _pin, INTERVAL_T _fadeTime, int increment = 10) {
+	void begin (byte _pin, INTERVAL_T _fadeTime, int _increment = 10) {
 	  pin = _pin;
 	  time = _fadeTime;
+	  increment = _increment;
 	  analogWrite (pin, 0);
 	}
 
